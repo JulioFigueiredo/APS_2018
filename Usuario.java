@@ -1,4 +1,3 @@
-
 package kanew;
 
 public class Usuario {
@@ -25,7 +24,7 @@ public class Usuario {
         this.curso = null;
     
     }
-    public Usuario (String nome, int matri, int idade, String senha, int ano, String curso){
+    public Usuario (String nome, int matri, int idade, String senha, String curso , int ano){
         this.nome_completo= nome;
         this.matricula = matri;
         this.idade = idade;
@@ -88,4 +87,3 @@ public class Usuario {
     
     
 }
-
