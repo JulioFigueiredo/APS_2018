@@ -1,0 +1,106 @@
+package kanew;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.sql.ResultSet;
+
+
+public class DAOPessoa {
+    
+private kanew.ConexaoBD conexao;
+private boolean login = false;
+
+
+
+	public DAOPessoa() {
+		
+		this.conexao = new kanew.ConexaoBD();
+	}
+	
+	public void criarDisc(Disciplina User) {
+		// abrindo a conexão com o BD
+		conexao.conectar();
+
+		try {
+			
+			PreparedStatement pst = conexao.getConexao().prepareStatement("insert into \"kanew\".Disciplina(nome,professor) values(?,?)");
+			
+			
+			pst.setString(1,User.getNome());
+			pst.setString(2, User.getProfessor());
+			
+			
+			
+			
+			
+			
+			pst.execute();
+		} catch (SQLException e) {
+			System.out.println("Erro: " + e.getMessage());
+		} finally {
+			// o banco deve ser desconectado, mesmo quando a exceção é lançada
+			conexao.desconectar();
+		}
+          
+		
+	}
+        public void criarUser(Usuario usuario) {
+		// abrindo a conexão com o BD
+		conexao.conectar();
+
+		try {
+			
+			PreparedStatement pst = conexao.getConexao().prepareStatement("insert into \"kanew\".usuario(nome_completo,matricula,idade,senha,curso,ano) values(?,?,?,?,?,?)");
+		
+			
+			pst.setString(1,usuario.getNome_completo());
+			pst.setInt(2,usuario.getMatricula());
+                        pst.setInt(3,usuario.getIdade());
+                        pst.setString(4,usuario.getSenha());
+                        pst.setString(5,usuario.getCurso());
+                        pst.setInt(6,usuario.getAno());
+			
+			
+			
+			
+			
+			
+			pst.execute();
+		} catch (SQLException e) {
+			System.out.println("Erro: " + e.getMessage());
+		} finally {
+			// o banco deve ser desconectado, mesmo quando a exceção é lançada
+			conexao.desconectar();
+		}
+          
+		
+	}
+        public void criarProf(Professor prof) {
+		
+		conexao.conectar();
+
+		try {
+			
+			PreparedStatement pst = conexao.getConexao().prepareStatement("insert into \"kanew\".professor(nome,disciplina,codigo) values(?,?,?)");
+			
+			pst.setString(1,prof.getNome());
+			pst.setString(2,prof.getDisciplina());
+                        pst.setInt(3,prof.getCodigo());
+			
+			
+			
+			
+			
+		
+			pst.execute();
+		} catch (SQLException e) {
+			System.out.println("Erro: " + e.getMessage());
+		} finally {
+			
+			conexao.desconectar();
+		}
+          
+		
+	}
+}
