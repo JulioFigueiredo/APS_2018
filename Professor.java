@@ -1,4 +1,3 @@
-
 package kanew;
 
 public class Professor {
@@ -22,6 +21,7 @@ public class Professor {
         this.Disciplina = disc;
         this.codigo = cod;
     }
+    
 
     public String getNome() {
         return Nome;
