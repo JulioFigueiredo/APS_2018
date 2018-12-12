@@ -1,0 +1,27 @@
+CREATE SCHEMA kanew
+    AUTHORIZATION postgres;
+	
+create table kanew.Disciplina(
+	nome varchar(50),
+	professor varchar(50)
+	
+);
+
+create table kanew.Professor(
+	nome varchar(50),
+	disciplina varchar(50),
+	codigo int
+);
+
+create table kanew.Usuario(
+	nome_completo varchar(50),
+	matricula int,
+	idade int,
+	senha varchar(50),
+	curso varchar(50),
+	ano int
+);
+
+select * from kanew.Usuario;
+select * from kanew.Professor;
+select * from kanew.Disciplina;
